@@ -24,3 +24,4 @@ Check out this [link](https://cbea.ms/git-commit/) for commit message guidelines
 - http://homepage.cs.uiowa.edu/~sriram/4980/spring20/notes/slides.1.21.pdf
 - http://homepage.cs.uiowa.edu/~sriram/4980/spring20/notes/Jan28-30.pdf
 - http://www.bio.utexas.edu/research/meyers/_docs/publications/DimitrovINFORMS10.pdf
+
