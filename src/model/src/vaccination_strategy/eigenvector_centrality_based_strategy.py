@@ -47,7 +47,6 @@ def vaccination_strategy(model):
     cd_array1 = contact_data['p1'].to_numpy()
     cd_array2 = contact_data['p2'].to_numpy()
     metadata = model.metadata
-    #metadata_array = metadata.to_numpy()
     g = dgl.graph((cd_array1, cd_array2), num_nodes = len(metadata.index))
     G = nx.gnm_random_graph(len(metadata.index), len(cd_array1), seed=None, directed=False)
     e = nx.eigenvector_centrality(G)
