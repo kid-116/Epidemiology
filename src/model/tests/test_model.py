@@ -9,9 +9,14 @@ sys.path.append('../')
 
 from src.utils import SIARD, run
 
+<<<<<<< HEAD
 # Picks up that file in the folder that was last modified
 df_path = 'src/data/generation/contact_network/'
 metadata_path = 'src/data/generation/metadata/'
+=======
+df_path = 'src/data/generation/contact_network/'
+metadata_path = "src/data/generation/metadata/"
+>>>>>>> origin
 def get_path(path):
     retval = []
     for file in os.listdir(path):
@@ -20,13 +25,25 @@ def get_path(path):
             req_path = max(retval)
             file = pd.read_csv(req_path)
     return file
+<<<<<<< HEAD
+=======
+
+get_path(df_path)
+get_path(metadata_path)
+
+     
+>>>>>>> origin
 
 get_path(df_path)
 get_path(metadata_path)
 
      
 def test_model():
+<<<<<<< HEAD
     model = SIARD(df=get_path(df_path), metadata=get_path(metadata_path))
+=======
+    model = SIR(df=get_path(df_path), metadata=get_path(metadata_path))
+>>>>>>> origin
 
     dir_path = os.path.dirname('src/vaccination_strategy/*')
     files_in_dir = [
