@@ -180,10 +180,7 @@ def visualize(result):
     plt.plot(time, no_asym, label='Asymptomatic')
     plt.plot(time, no_rec, label='Recovered')
     plt.plot(time, no_dec, label='Deceased')
-
     plt.legend()
-
-
 
 def simulate(model, timespan, vaccinated, vaccination_day, generated_video_name = False):
 
