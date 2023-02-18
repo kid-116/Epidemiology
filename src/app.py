@@ -3,7 +3,7 @@ import pandas as pd
 from flask import Flask, render_template, url_for, request, redirect, send_from_directory, send_file
 import matplotlib.pyplot as plt
 
-from model.src.utils import SIR, run
+from model.src.utils import SIARD, run
 from model.src.vaccination_strategy.random_strategy import vaccination_strategy as random_vaccination_strategy
 from model.src.vaccination_strategy.degree_based_strategy import vaccination_strategy as degree_based_vaccination_strategy
 from model.src.vaccination_strategy.occupation_based_strategy import vaccination_strategy as occupation_based_vaccination_strategy
@@ -47,7 +47,7 @@ def prediction():
 
     metadata = pd.read_csv('model/src/data/generation/metadata.csv')
     df = pd.read_csv('model/src/data/generation/contact_network.csv')
-    model = SIR(
+    model = SIARD(
         metadata=metadata,
         df=df
     )

@@ -12,7 +12,7 @@ pip install -r ./requirements.txt
 ```
 - Execute `python ./setup.py develop` to install the package
 - Execute `pytest` to check if everything is working ok.
-
+**NOTE**: Check for the compatibility between the Python version in the local system and Pytorch.
 ## Contribution guidelines
 - Fork the project
 - Make a new branch
@@ -24,3 +24,4 @@ Check out this [link](https://cbea.ms/git-commit/) for commit message guidelines
 - http://homepage.cs.uiowa.edu/~sriram/4980/spring20/notes/slides.1.21.pdf
 - http://homepage.cs.uiowa.edu/~sriram/4980/spring20/notes/Jan28-30.pdf
 - http://www.bio.utexas.edu/research/meyers/_docs/publications/DimitrovINFORMS10.pdf
+- https://www.medicalnewstoday.com/articles/4-in-10-people-with-a-sars-cov-2-infection-may-have-no-symptoms

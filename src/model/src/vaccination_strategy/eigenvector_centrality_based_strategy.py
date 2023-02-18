@@ -1,8 +1,9 @@
 import networkx as nx
 from operator import itemgetter
+from math import sqrt
 import dgl
-def eigenvector_centrality(G, max_iter=100, tol=1.0e-6, nstart=None, weight ='weight'):
-    from math import sqrt
+
+def eigenvector_centrality(G, max_iterations=100, lim=1.0e-6, nstart=None, weight ='weight'):
     if type(G) == nx.MultiGraph or type(G) == nx.MultiDiGraph:
         raise nx.NetworkXException("Not defined for multigraphs.")
   
@@ -10,41 +11,35 @@ def eigenvector_centrality(G, max_iter=100, tol=1.0e-6, nstart=None, weight ='we
         raise nx.NetworkXException("Empty graph.")
   
     if nstart is None:
-  
-        # choose starting vector with entries of 1/len(G)
         x = dict([(n,1.0/len(G)) for n in G])
     else:
         x = nstart
   
-    # normalize starting vector
     s = 1.0/sum(x.values())
     for k in x:
         x[k] *= s
-    nnodes = G.number_of_nodes()
+    n_nodes = G.number_of_nodes()
   
-    # make up to max_iter iterations
-    for i in range(max_iter):
-        xlast = x
-        x = dict.fromkeys(xlast, 0)
+    for i in range(max_iterations):
+        x_last = x
+        x = dict.fromkeys(x_last, 0)
   
-        # do the multiplication y^T = x^T A
         for n in x:
-            for nbr in G[n]:
-                x[nbr] += xlast[n] * G[n][nbr].get(weight, 1)
+            for entry in G[n]:
+                x[entry] += x_last[n] * G[n][entry].get(weight, 1)
   
         # normalize vector
         try:
             s = 1.0/sqrt(sum(v**2 for v in x.values()))
   
-        # this should never be zero?
         except ZeroDivisionError:
             s = 1.0
         for n in x:
             x[n] *= s
   
         # check convergence
-        err = sum([abs(x[n]-xlast[n]) for n in x])
-        if err < nnodes*tol:
+        err = sum([abs(x[n]-x_last[n]) for n in x])
+        if err < n_nodes*lim:
             return x 
 
 def vaccination_strategy(model):

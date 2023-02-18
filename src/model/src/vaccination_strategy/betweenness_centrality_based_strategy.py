@@ -14,16 +14,15 @@ def betweenness_centrality(G, k=None, normalized=True, weight=None, endpoints=Fa
     for s in nodes:
 
         # single source shortest path
-        if weight is None: # use BFS
+        if weight is None: 
             S, P, sigma = nx.single_source_shortest_path_basic(G, s)
 
-        # accumulation
+        # accumulation of the nodes
         if endpoints:
             betweenness = nx.accumulate_endpoints(betweenness, S, P, sigma, s)
         else:
             betweenness = nx.accumulate_basic(betweenness, S, P, sigma, s)
 
-    # rescaling
     betweenness = nx.rescale(betweenness, len(G), normalized=normalized,
             directed=G.is_directed(), k=k)
     return betweenness
