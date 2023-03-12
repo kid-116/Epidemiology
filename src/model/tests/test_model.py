@@ -1,22 +1,37 @@
 import pandas as pd
+import datetime as dt
 import sys
 import os
+import glob    
 import importlib.util
 
 sys.path.append('../')
 
-from src.utils import SIR, run
+from src.utils import SIARD, run
 
-metadata = pd.read_csv('src/data/generation/metadata.csv')
-df = pd.read_csv('src/data/generation/contact_network.csv')
+# Picks up that file in the folder that was last modified
+df_path = 'src/data/generation/contact_network/'
+metadata_path = 'src/data/generation/metadata/'
 
+def get_path(path):
+    retval = []
+    for file in os.listdir(path):
+        if file.endswith(".csv"):
+            retval.append(os.path.join((path), file))
+            req_path = max(retval)
+            file = pd.read_csv(req_path)
+    return file
+
+
+get_path(df_path)
+get_path(metadata_path)
+
+     
 def test_model():
-    model = SIR(
-        metadata=metadata,
-        df=df
-    )
+    model = SIARD(df=get_path(df_path), metadata=get_path(metadata_path))
 
-    dir_path = os.path.dirname('src/vaccination_strategy/')
+
+    dir_path = os.path.dirname('src/vaccination_strategy/*')
     files_in_dir = [
         f[:-3] for f in os.listdir(dir_path)
         if f.endswith('.py') and f != '__init__.py'

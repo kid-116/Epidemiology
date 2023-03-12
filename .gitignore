@@ -6,7 +6,7 @@ __pycache__/
 venv/
 
 .pytest_cache/
-sir_model.egg-info/
+siard_model.egg-info/
 
 .vscode/
 

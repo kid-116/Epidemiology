@@ -36,7 +36,7 @@ h2::before {
   flex-shrink: 0;
 }
 
-.SIR_img {
+.SIARD_img {
   /* width: 400px; */
   width: 30%;
 }
@@ -135,7 +135,7 @@ h2::before {
 }
 
 @media (max-width: 991.98px) {
-  .SIR_img {
+  .SIARD_img {
     width: 100%;
   }
 
